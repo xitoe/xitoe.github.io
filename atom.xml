@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>xitoe&#39;s blog</title>
+  <subtitle>不忘初心,方得始终</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://xitoe.com/"/>
+  <updated>2017-10-15T13:38:18.911Z</updated>
+  <id>http://xitoe.com/</id>
+  
+  <author>
+    <name>西头鹅</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>自增自减运算符</title>
+    <link href="http://xitoe.com/coder/java/Java_operator.html"/>
+    <id>http://xitoe.com/coder/java/Java_operator.html</id>
+    <published>2017-10-15T05:39:00.000Z</published>
+    <updated>2017-10-15T13:38:18.911Z</updated>
+    
+    <content type="html"><![CDATA[<p>还记得以前就看过类似 <a href="https://juejin.im/entry/59e2c4036fb9a045263a9df5?utm_source=gold_browser_extension" target="_blank" rel="external">Java 自增自减运算符笔试题</a> 这样子的题目说明，当时也就糊里糊涂地看；今天重新看了下，想了想不怎么认同里面的观点，来把自己的想法陈述下，欢迎各位朋友指正~</p><a id="more"></a><h2 id="题目大概意思"><a href="#题目大概意思" class="headerlink" title="题目大概意思"></a>题目大概意思</h2><p>直接贴下自个代码吧：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a = <span class="number">0</span>;</div><div class="line"><span class="keyword">int</span> b = <span class="number">1</span>;</div><div class="line"></div><div class="line">b = a++;</div><div class="line">System.out.println(a);  <span class="comment">// 1</span></div><div class="line">System.out.println(b);  <span class="comment">// 0</span></div><div class="line"></div><div class="line">a = a++;</div><div class="line">System.out.println(a);  <span class="comment">// 1</span></div></pre></td></tr></table></figure><h2 id="对自增自减运算符的想法"><a href="#对自增自减运算符的想法" class="headerlink" title="对自增自减运算符的想法"></a>对自增自减运算符的想法</h2><p>根据运算符优先级来看：<code>b = a++;</code> 是先处理 <code>a++</code> 再将其 <strong>返回的结果</strong> 赋值给 <code>b</code></p><p>附表：<a href="http://www.cnblogs.com/gw811/archive/2012/10/13/2722752.html" target="_blank" rel="external">Java运算符优先级</a></p><p>而自增的过程: (自减过程类似)</p><blockquote><p><code>count++</code> : 先进行 +1 操作， 再将 <strong>原来的数值</strong> 返回;<br><code>++count</code> : 先进行 +1 操作，然后将 <strong>变更后的结果</strong> 返回.</p></blockquote><p>所以在上面代码中：</p><blockquote><p><code>b = a++;</code> 即为 a 增加 1, a = 1,再将原来的值 0 赋值给 b, b = 0;<br><code>a = a++;</code> 即为 a 增加 1, a = 2,再将原来的值 1 赋值给 a, a = 1.</p></blockquote><p>这样子就好理解多了，那么自增过程就可以简单写成：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 后缀自增</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">suffixAdd</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> temp = count;</div><div class="line">    count += <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 前缀自增</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">prefixAdd</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> count += <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>关于C++自增自减运算符的，自个在线上测试平台上写过，<strong>结果跟Java一样</strong>，并不像那篇文章所说的那样子<br>因为笔者对C++并不熟悉，所以这个你们自己可以试试，有不对的地方请诸位指正，不胜感激~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;还记得以前就看过类似 &lt;a href=&quot;https://juejin.im/entry/59e2c4036fb9a045263a9df5?utm_source=gold_browser_extension&quot;&gt;Java 自增自减运算符笔试题&lt;/a&gt; 这样子的题目说明，当时也就糊里糊涂地看；今天重新看了下，想了想不怎么认同里面的观点，来把自己的想法陈述下，欢迎各位朋友指正~&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="coder" scheme="http://xitoe.com/categories/coder/"/>
+    
+      <category term="java" scheme="http://xitoe.com/categories/coder/java/"/>
+    
+    
+      <category term="Java" scheme="http://xitoe.com/tags/Java/"/>
+    
+      <category term="运算符" scheme="http://xitoe.com/tags/%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于 Markdown 的博文写作</title>
+    <link href="http://xitoe.com/blog/write-tags.html"/>
+    <id>http://xitoe.com/blog/write-tags.html</id>
+    <published>2016-11-06T07:41:00.000Z</published>
+    <updated>2017-10-15T12:46:56.383Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hexo 上支持用 Markdown 写一些简单的文章，但支持的写法较单一，如不能写流程图、脚注等。<br>好在对我而言这已经够用了，同时 Hexo 内置了一些标签插件。</p><p>在此我把一些常用的 Hexo 及 theme-nexT 的标签都写在这，方便查阅</p><ul><li><a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="external">Hexo 标签插件文档</a></li><li><a href="http://theme-next.iissnan.com/tag-plugins.html" target="_blank" rel="external">theme-nexT 标签文档</a></li></ul><a id="more"></a><hr><p>changelog – 2017.3.3<br>最近发现另外几篇对 Markdown 博文写作整理的好文：</p><ul><li><a href="http://blog.junyu.pro/posts/0006-qa-posts-based-on-markdown.html" target="_blank" rel="external">基于Markdown的博文写作</a></li><li><a href="http://blog.junyu.pro/posts/0010-hexo-learn-from-Never-yu.html" target="_blank" rel="external">Hexo博客展示进阶</a></li></ul><hr><h1 id="Hexo-标签插件（Tag-Plugins）"><a href="#Hexo-标签插件（Tag-Plugins）" class="headerlink" title="Hexo 标签插件（Tag Plugins）"></a>Hexo 标签插件（Tag Plugins）</h1><h2 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h2><blockquote><p>在文章中插入指定大小的图片。</p></blockquote><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% img [<span class="keyword">class</span> names] /path/to/<span class="built_in">image</span> [<span class="built_in">width</span>] [<span class="built_in">height</span>] [title <span class="built_in">text</span> [alt <span class="built_in">text</span>]] %&#125;</div></pre></td></tr></table></figure><h2 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h2><blockquote><p>在文章中插入引言，可包含作者、来源和标题。<br>别号： quote</p></blockquote><figure class="highlight twig"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">blockquote</span> [author[, <span class="name">source</span>]] [link] [source_link_title] %&#125;</span><span class="xml"></span></div><div class="line">content</div><div class="line"><span class="template-tag">&#123;% <span class="name">endblockquote</span> %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure><h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><blockquote><p>在文章中插入代码。<br>别名： code</p></blockquote><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;% codeblock <span class="string">[title]</span> <span class="string">[lang:language]</span> <span class="string">[url]</span> <span class="string">[link text]</span> %&#125;</div><div class="line">code snippet</div><div class="line">&#123;% endcodeblock %&#125;</div></pre></td></tr></table></figure><h2 id="反引号代码块"><a href="#反引号代码块" class="headerlink" title="反引号代码块"></a>反引号代码块</h2><blockquote><p>另一种形式的代码块，不同的是它使用三个反引号来包裹。</p></blockquote><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">``` [language] [title] [url] [link text] <span class="keyword">code</span> snippet ```</div></pre></td></tr></table></figure><h2 id="Include-Code"><a href="#Include-Code" class="headerlink" title="Include Code"></a>Include Code</h2><blockquote><p>插入 source 文件夹内的代码文件</p></blockquote><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% include_code [title] [<span class="keyword">lan</span><span class="variable">g:language</span>] path/<span class="keyword">to</span>/<span class="keyword">file</span> %&#125;</div></pre></td></tr></table></figure><h2 id="Gist"><a href="#Gist" class="headerlink" title="Gist"></a>Gist</h2><blockquote><p>在文章中嵌入 Gist</p></blockquote><figure class="highlight clojure"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% gist gist_id [filename] %&#125;</div></pre></td></tr></table></figure><hr><h1 id="nexT-主题内置标签"><a href="#nexT-主题内置标签" class="headerlink" title="nexT 主题内置标签"></a>nexT 主题内置标签</h1><blockquote><p><strong>经常换主题的情况下慎用！</strong></p></blockquote><h2 id="文本居中的引用"><a href="#文本居中的引用" class="headerlink" title="文本居中的引用"></a>文本居中的引用</h2><blockquote><p>此标签将生成一个带上下分割线的引用，同时引用内文本将自动居中。</p></blockquote><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- HTML方式: 直接在 Markdown 文件中编写 HTML 来调用 --&gt;</span></div><div class="line"><span class="comment">&lt;!-- 其中 class="blockquote-center" 是必须的 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">blockquote</span> <span class="attr">class</span>=<span class="string">"blockquote-center"</span>&gt;</span>blah blah blah<span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></div><div class="line">  </div><div class="line"><span class="comment">&lt;!-- 标签 方式，要求版本在0.4.5或以上 --&gt;</span></div><div class="line">&#123;% centerquote %&#125;blah blah blah&#123;% endcenterquote %&#125;</div><div class="line">  </div><div class="line">  <span class="comment">&lt;!-- 标签别名 --&gt;</span></div><div class="line">&#123;% cq %&#125; blah blah blah &#123;% endcq %&#125;</div></pre></td></tr></table></figure><h2 id="突破容器宽度限制的图片"><a href="#突破容器宽度限制的图片" class="headerlink" title="突破容器宽度限制的图片"></a>突破容器宽度限制的图片</h2><blockquote><p>当使用此标签引用图片时，图片将自动扩大 26%，并突破文章容器的宽度。</p></blockquote><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- HTML方式: 直接在 Markdown 文件中编写 HTML 来调用 --&gt;</span></div><div class="line"><span class="comment">&lt;!-- 其中 class="full-image" 是必须的 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/image-url"</span> <span class="attr">class</span>=<span class="string">"full-image"</span> /&gt;</span></div><div class="line">  </div><div class="line"><span class="comment">&lt;!-- 标签 方式，要求版本在0.4.5或以上 --&gt;</span></div><div class="line">&#123;% fullimage /image-url, alt, title %&#125;</div><div class="line">  </div><div class="line"><span class="comment">&lt;!-- 别名 --&gt;</span></div><div class="line">&#123;% fi /image-url, alt, title %&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hexo 上支持用 Markdown 写一些简单的文章，但支持的写法较单一，如不能写流程图、脚注等。&lt;br&gt;好在对我而言这已经够用了，同时 Hexo 内置了一些标签插件。&lt;/p&gt;&lt;p&gt;在此我把一些常用的 Hexo 及 theme-nexT 的标签都写在这，方便查阅&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://hexo.io/zh-cn/docs/tag-plugins.html&quot;&gt;Hexo 标签插件文档&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://theme-next.iissnan.com/tag-plugins.html&quot;&gt;theme-nexT 标签文档&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="http://xitoe.com/categories/blog/"/>
+    
+    
+      <category term="Markdown" scheme="http://xitoe.com/tags/Markdown/"/>
+    
+      <category term="Hexo" scheme="http://xitoe.com/tags/Hexo/"/>
+    
+      <category term="nexT" scheme="http://xitoe.com/tags/nexT/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo 博客搭建记录</title>
+    <link href="http://xitoe.com/blog/hexo-mark.html"/>
+    <id>http://xitoe.com/blog/hexo-mark.html</id>
+    <published>2016-10-15T06:25:05.000Z</published>
+    <updated>2017-10-15T12:46:27.890Z</updated>
+    
+    <content type="html"><![CDATA[<p>在网上搜罗了一大堆教程之后终于动手把自己的 blog 搞了起来，仅以此文记录用 Hexo 搭建 Blog 时遇到的一些问题</p><h2 id="附常见问题解决方案"><a href="#附常见问题解决方案" class="headerlink" title="附常见问题解决方案"></a>附常见问题解决方案</h2><ul><li><a href="https://xuanwo.org/2014/08/14/hexo-usual-problem/" target="_blank" rel="external">Hexo常见问题解决方案</a></li><li><a href="http://chitanda.me/2015/06/11/tips-for-setup-hexo/" target="_blank" rel="external">另一篇问题解决方案</a></li></ul><a id="more"></a><hr><h2 id="个人遇到的问题"><a href="#个人遇到的问题" class="headerlink" title="个人遇到的问题"></a>个人遇到的问题</h2><h3 id="自定义域名设置错误"><a href="#自定义域名设置错误" class="headerlink" title="自定义域名设置错误"></a>自定义域名设置错误</h3><blockquote><p>Q：使用自己的域名打不开，github.io 可以<br>A: 检查自己github下是否有cname文件 ( CNAME 文件是<strong>没有文件类型</strong>的！)</p></blockquote><h3 id="增加coding路线时遇错"><a href="#增加coding路线时遇错" class="headerlink" title="增加coding路线时遇错"></a>增加coding路线时遇错</h3><blockquote><p>Q: 增加coding作为国内路线之后 <code>hexo g</code> 无法正确部署：无法部署或部署后文件不全</p></blockquote><p>A: 确认配置正确后使用以下命令清空之前git部署的相关文件：</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rm -rf <span class="selector-class">.deploy_git</span></div><div class="line">hexo clean</div><div class="line">hexo g</div></pre></td></tr></table></figure><h3 id="生成的文章文件为非html文件"><a href="#生成的文章文件为非html文件" class="headerlink" title="生成的文章文件为非html文件"></a>生成的文章文件为非html文件</h3><blockquote><p>Q：文章内容为正常的 HTML 内容，但文件非 HTML 文件，无文件后缀<br>A：在<strong>站点配置</strong>文件中正确填写 <em>permalink</em></p></blockquote><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">正确：</div><div class="line"><span class="symbol">permalink:</span> <span class="symbol">:category/</span><span class="symbol">:title</span>.html</div><div class="line"><span class="symbol">permalink:</span> <span class="symbol">:category/</span><span class="symbol">:title/</span></div><div class="line"></div><div class="line">错误:</div><div class="line"><span class="symbol">permalink:</span> <span class="symbol">:category/</span><span class="symbol">:title</span></div></pre></td></tr></table></figure><h3 id="防止对-readme-文件进行渲染"><a href="#防止对-readme-文件进行渲染" class="headerlink" title="防止对 readme 文件进行渲染"></a>防止对 readme 文件进行渲染</h3><blockquote><p>Q: Hexo 3.0中支持 <code>skip_render</code> 特性，其指定的文件不进行渲染</p></blockquote><p>A: 在Hexo的配置文件中配置：<br><code>skip_render: README.md</code></p><h3 id="404页面不返回首页"><a href="#404页面不返回首页" class="headerlink" title="404页面不返回首页"></a>404页面不返回首页</h3><p>Q: 想用404公益页面，然而说好的返回博客首页呢？？？代码写了无效啊…<br><del>未解决呢…网上搜索找不到相关的，who can tell me why?</del><br>A: 已替换成新版的页面代码解决！</p><hr><h2 id="Hexo搭建博客参考教程"><a href="#Hexo搭建博客参考教程" class="headerlink" title="Hexo搭建博客参考教程"></a>Hexo搭建博客参考教程</h2><p>参考的比较详细有用的教程文章，想用 Hexo 搭建博客的可以综合参考这几篇文章:</p><ul><li><a href="http://www.wuxubj.cn/2016/08/Hexo-nexT-build-personal-blog/index.html" target="_blank" rel="external">务虚笔记的搭建教程</a></li><li><a href="https://xuanwo.org/2015/03/26/hexo-intor/" target="_blank" rel="external">一位 Hexo 开发参与者的教程</a> - xuanwo</li><li><a href="http://masikkk.com/blog/hexo-10-coding-pages-deploy/#" target="_blank" rel="external">github 和 coding 双部署</a></li><li><a href="https://neveryu.github.io/2016/09/30/hexo-next-two/" target="_blank" rel="external">对 nexT 主题的一些调整和优化</a></li><li><a href="http://blog.junyu.pro/posts/0008-blog-seo.html" target="_blank" rel="external">SEO 优化</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在网上搜罗了一大堆教程之后终于动手把自己的 blog 搞了起来，仅以此文记录用 Hexo 搭建 Blog 时遇到的一些问题&lt;/p&gt;&lt;h2 id=&quot;附常见问题解决方案&quot;&gt;&lt;a href=&quot;#附常见问题解决方案&quot; class=&quot;headerlink&quot; title=&quot;附常见问题解决方案&quot;&gt;&lt;/a&gt;附常见问题解决方案&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://xuanwo.org/2014/08/14/hexo-usual-problem/&quot;&gt;Hexo常见问题解决方案&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;http://chitanda.me/2015/06/11/tips-for-setup-hexo/&quot;&gt;另一篇问题解决方案&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="blog" scheme="http://xitoe.com/categories/blog/"/>
+    
+    
+      <category term="Hexo" scheme="http://xitoe.com/tags/Hexo/"/>
+    
+      <category term="Blog" scheme="http://xitoe.com/tags/Blog/"/>
+    
+  </entry>
+  
+</feed>
