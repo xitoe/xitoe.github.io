@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xitoe.com/"/>
-  <updated>2017-10-15T13:38:18.911Z</updated>
+  <updated>2017-10-15T12:46:56.383Z</updated>
   <id>http://xitoe.com/</id>
   
   <author>
@@ -14,32 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>自增自减运算符</title>
-    <link href="http://xitoe.com/coder/java/Java_operator.html"/>
-    <id>http://xitoe.com/coder/java/Java_operator.html</id>
-    <published>2017-10-15T05:39:00.000Z</published>
-    <updated>2017-10-15T13:38:18.911Z</updated>
-    
-    <content type="html"><![CDATA[<p>还记得以前就看过类似 <a href="https://juejin.im/entry/59e2c4036fb9a045263a9df5?utm_source=gold_browser_extension" target="_blank" rel="external">Java 自增自减运算符笔试题</a> 这样子的题目说明，当时也就糊里糊涂地看；今天重新看了下，想了想不怎么认同里面的观点，来把自己的想法陈述下，欢迎各位朋友指正~</p><a id="more"></a><h2 id="题目大概意思"><a href="#题目大概意思" class="headerlink" title="题目大概意思"></a>题目大概意思</h2><p>直接贴下自个代码吧：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a = <span class="number">0</span>;</div><div class="line"><span class="keyword">int</span> b = <span class="number">1</span>;</div><div class="line"></div><div class="line">b = a++;</div><div class="line">System.out.println(a);  <span class="comment">// 1</span></div><div class="line">System.out.println(b);  <span class="comment">// 0</span></div><div class="line"></div><div class="line">a = a++;</div><div class="line">System.out.println(a);  <span class="comment">// 1</span></div></pre></td></tr></table></figure><h2 id="对自增自减运算符的想法"><a href="#对自增自减运算符的想法" class="headerlink" title="对自增自减运算符的想法"></a>对自增自减运算符的想法</h2><p>根据运算符优先级来看：<code>b = a++;</code> 是先处理 <code>a++</code> 再将其 <strong>返回的结果</strong> 赋值给 <code>b</code></p><p>附表：<a href="http://www.cnblogs.com/gw811/archive/2012/10/13/2722752.html" target="_blank" rel="external">Java运算符优先级</a></p><p>而自增的过程: (自减过程类似)</p><blockquote><p><code>count++</code> : 先进行 +1 操作， 再将 <strong>原来的数值</strong> 返回;<br><code>++count</code> : 先进行 +1 操作，然后将 <strong>变更后的结果</strong> 返回.</p></blockquote><p>所以在上面代码中：</p><blockquote><p><code>b = a++;</code> 即为 a 增加 1, a = 1,再将原来的值 0 赋值给 b, b = 0;<br><code>a = a++;</code> 即为 a 增加 1, a = 2,再将原来的值 1 赋值给 a, a = 1.</p></blockquote><p>这样子就好理解多了，那么自增过程就可以简单写成：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 后缀自增</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">suffixAdd</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> temp = count;</div><div class="line">    count += <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> temp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 前缀自增</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">prefixAdd</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> count += <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>关于C++自增自减运算符的，自个在线上测试平台上写过，<strong>结果跟Java一样</strong>，并不像那篇文章所说的那样子<br>因为笔者对C++并不熟悉，所以这个你们自己可以试试，有不对的地方请诸位指正，不胜感激~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;还记得以前就看过类似 &lt;a href=&quot;https://juejin.im/entry/59e2c4036fb9a045263a9df5?utm_source=gold_browser_extension&quot;&gt;Java 自增自减运算符笔试题&lt;/a&gt; 这样子的题目说明，当时也就糊里糊涂地看；今天重新看了下，想了想不怎么认同里面的观点，来把自己的想法陈述下，欢迎各位朋友指正~&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="coder" scheme="http://xitoe.com/categories/coder/"/>
-    
-      <category term="java" scheme="http://xitoe.com/categories/coder/java/"/>
-    
-    
-      <category term="Java" scheme="http://xitoe.com/tags/Java/"/>
-    
-      <category term="运算符" scheme="http://xitoe.com/tags/%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
-    
-  </entry>
   
   <entry>
     <title>基于 Markdown 的博文写作</title>
